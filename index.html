@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>X学院 · 研发评审级原型 V1.3</title>
+  <link rel="stylesheet" href="./styles.css?v=42" />
+  <link rel="stylesheet" href="./im.css?v=2" />
+  <link rel="stylesheet" href="./workbench.css" />
+  <link rel="stylesheet" href="./scrm-real.css" />
+  <link rel="stylesheet" href="./ops-integration.css?v=12" />
+  <link rel="stylesheet" href="./reservation-center.css?v=1" />
+  <link rel="stylesheet" href="./xorder-center.css?v=1" />
+  <link rel="stylesheet" href="./camp-content.css?v=9" />
+  <link rel="stylesheet" href="./tour.css?v=5" />
+</head>
+<body>
+  <div class="prototype-shell" id="app">
+    <header class="review-bar">
+      <div class="review-bar__brand">
+        <span class="brand-mark">X</span>
+        <span><strong>X学院</strong><small>研发评审级原型 V1.3</small></span>
+      </div>
+      <nav class="system-tabs" aria-label="系统切换">
+        <button class="system-tab is-active" data-system="overview">评审总览</button>
+        <button class="system-tab" data-system="parent">家长端</button>
+        <button class="system-tab" data-system="child">孩子端</button>
+        <button class="system-tab" data-system="scrm">SCRM</button>
+        <button class="system-tab" data-system="ops">传承后台</button>
+        <button class="system-tab" data-system="camp">营地执行端</button>
+      </nav>
+      <div class="review-bar__actions">
+        <button class="tour-launch" data-start-tour><i>▶</i><span>导览中心</span></button>
+        <span class="demo-chip"><i></i>演示数据</span>
+        <button class="icon-btn" id="themeToggle" aria-label="切换深浅主题">◐</button>
+      </div>
+    </header>
+
+    <main class="prototype-main">
+      <section class="system-view is-active" data-view="overview">
+        <div class="overview-hero stagger">
+          <div>
+            <span class="eyebrow">V1.3 · 产品 / UI / 研发 / 测试联合评审</span>
+            <h1>一条可追溯的成长履约链路</h1>
+            <p>从 SCRM 合同生效，到共享权益、营期预约、参营确认、营地履约与成长档案。所有特殊情况走审批，历史数据永不覆盖。</p>
+            <div class="hero-actions">
+              <button class="btn btn--primary" data-start-tour>▶ 打开导览中心</button>
+              <button class="btn btn--tonal" data-jump="parent">从家长预约开始</button>
+              <button class="btn btn--tonal" data-jump="ops">查看运营工作台</button>
+            </div>
+          </div>
+          <div class="flow-orbit" aria-label="核心业务链路">
+            <div class="orbit-core"><strong>student_id</strong><span>唯一成长主档</span></div>
+            <span class="orbit-node n1">合同</span><span class="orbit-node n2">权益</span>
+            <span class="orbit-node n3">预约</span><span class="orbit-node n4">履约</span>
+          </div>
+        </div>
+
+        <div class="summary-grid stagger">
+          <article class="metric-card"><span>页面状态</span><strong>76</strong><small>覆盖 4 套系统与双身份 App 的评审路径</small></article>
+          <article class="metric-card"><span>核心系统</span><strong>4</strong><small>兴智 App · SCRM · 后台 · 工作台</small></article>
+          <article class="metric-card"><span>预约主状态</span><strong>11</strong><small>另含 4 类申请 / 异常状态</small></article>
+          <article class="metric-card"><span>确认规则</span><strong>22</strong><small>以 V1.1 后置确认项为准</small></article>
+        </div>
+
+        <div class="review-grid stagger">
+          <article class="panel journey-panel">
+            <div class="panel__head"><div><span class="eyebrow">主流程</span><h2>系统间数据接力</h2></div><span class="status status--ok">规则已定稿</span></div>
+            <div class="journey">
+              <button class="journey__step" data-jump="scrm"><i>1</i><span><b>课包成交与签约</b><small>订单选择关联子产品</small></span></button>
+              <span class="journey__line"></span>
+              <button class="journey__step" data-jump="ops"><i>2</i><span><b>建立权益</b><small>匹配 student_id</small></span></button>
+              <span class="journey__line"></span>
+              <button class="journey__step" data-jump="parent"><i>3</i><span><b>预约确认</b><small>冻结权益与营位</small></span></button>
+              <span class="journey__line"></span>
+              <button class="journey__step" data-jump="camp"><i>4</i><span><b>营地履约</b><small>签到后正式核销</small></span></button>
+              <span class="journey__line"></span>
+              <button class="journey__step" data-jump="parent"><i>5</i><span><b>成长沉淀</b><small>报告归入长期档案</small></span></button>
+            </div>
+          </article>
+
+          <article class="panel rule-panel">
+            <div class="panel__head"><div><span class="eyebrow">评审关注</span><h2>关键规则快速验证</h2></div></div>
+            <div class="rule-list">
+              <button data-demo="conflict"><span class="rule-icon violet">↔</span><span><b>时间冲突</b><small>候补允许，转正式时复校验</small></span><em>演示</em></button>
+              <button data-demo="cancel"><span class="rule-icon amber">×</span><span><b>分阶段取消</b><small>锁定后进入审批</small></span><em>演示</em></button>
+              <button data-demo="change"><span class="rule-icon blue">⇄</span><span><b>更换营员</b><small>重校验并保留原历史</small></span><em>演示</em></button>
+              <button data-demo="contract"><span class="rule-icon red">!</span><span><b>合同终止</b><small>已确认预约转人工处理</small></span><em>演示</em></button>
+            </div>
+          </article>
+        </div>
+
+        <article class="panel coverage-panel stagger">
+          <div class="panel__head"><div><span class="eyebrow">原型覆盖</span><h2>本轮可评审的页面与交互</h2></div><span class="muted">点击顶部系统标签进入</span></div>
+          <div class="coverage-grid">
+            <div><span class="coverage-no">01</span><h3>兴智 App</h3><p>家长管理资格与预约；孩子通过受监护账号完成任务、测评、沟通与成长记录。</p></div>
+            <div><span class="coverage-no">02</span><h3>SCRM</h3><p>上架课包、不单卖子产品、订单组合选择、合同孩子资料与 X学院权益同步。</p></div>
+            <div><span class="coverage-no">03</span><h3>传承后台</h3><p>服务资格、课程营期、教师助教、报名分组、调班审批、预约与独立营后管理。</p></div>
+            <div><span class="coverage-no">04</span><h3>营地执行端</h3><p>移动签到、今日任务、异常上报与成长证据记录。</p></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="system-view" data-view="parent">
+        <div class="workspace workspace--mobile">
+          <aside class="review-aside">
+            <span class="eyebrow">兴智 App 融合改造</span><h2>家长端流程</h2>
+            <button class="aside-link is-active" data-parent-mode="app"><i>⌂</i>家庭成长树 Tab</button>
+            <button class="aside-link" data-parent-mode="college"><i>✦</i>X学院 Tab</button>
+            <button class="aside-link" data-entitlement-demo="active"><i>✓</i>有权益父母账号</button>
+            <button class="aside-link" data-entitlement-demo="inactive"><i>○</i>无权益父母账号</button>
+            <button class="aside-link" data-parent-page="reservations"><i>◷</i>营期预约</button>
+            <button class="aside-link" data-parent-demo="locked"><i>▣</i>名单锁定</button>
+            <button class="aside-link" data-parent-page="growth"><i>◇</i>成长档案</button>
+            <div class="aside-note"><b>融合原则</b><p>保留“传承 / 消息 / 通讯录 / 我”主导航；X学院作为传承首页业务入口，不新增独立 App。</p></div>
+          </aside>
+          <div class="phone-stage">
+            <div class="phone-frame">
+              <div class="phone-status"><span>9:41</span><span>● ● ▰</span></div>
+              <div class="phone-screen" id="parentScreen"></div>
+              <nav class="phone-tabs">
+                <button class="is-active" data-app-tab="heritage"><i class="tab-icon tab-icon--home"></i><span>传承</span></button>
+                <button data-app-tab="messages"><i class="tab-icon tab-icon--message"></i><span>消息</span></button>
+                <button data-app-tab="contacts"><i class="tab-icon tab-icon--contact"></i><span>通讯录</span></button>
+                <button data-app-tab="profile"><i class="tab-icon tab-icon--profile"></i><span>我</span></button>
+              </nav>
+            </div>
+            <aside class="annotation-card">
+              <span class="eyebrow">研发注记</span>
+              <h3 id="parentAnnotationTitle">X学院服务资格首页</h3>
+              <p id="parentAnnotationText">接口聚合父母账号的服务资格、合同孩子和待办；切换孩子时重新计算可预约课程。</p>
+              <dl><div><dt>权限</dt><dd>登录家长本人</dd></div><div><dt>核心对象</dt><dd>guardian_id / student_id</dd></div><div><dt>异常</dt><dd>无孩子、无权益、同步延迟</dd></div></dl>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="system-view" data-view="child">
+        <div class="workspace workspace--mobile child-review-workspace">
+          <aside class="review-aside child-review-aside">
+            <span class="eyebrow">兴智 App · 受监护孩子账号</span><h2>孩子端体验</h2>
+            <button class="aside-link is-active" data-child-page="home"><i>首</i>孩子首页</button>
+            <button class="aside-link" data-child-page="tasks"><i>任</i>今日任务</button>
+            <button class="aside-link" data-child-page="assessment"><i>测</i>六维测评</button>
+            <button class="aside-link" data-child-page="messages"><i>信</i>受控消息</button>
+            <button class="aside-link" data-child-page="growth"><i>长</i>我的成长</button>
+            <button class="aside-link" data-child-page="profile"><i>我</i>我的空间</button>
+            <button class="aside-link" data-action="child-login-demo"><i>登</i>登录与绑定演示</button>
+            <div class="aside-note"><b>权限边界</b><p>孩子账号只参与任务、测评、成长和受控沟通；预约、合同、服务资格、健康资料与监护关系仍由父母账号管理。</p></div>
+          </aside>
+          <div class="phone-stage child-phone-stage">
+            <div class="phone-frame child-phone-frame">
+              <div class="phone-status child-phone-status"><span>09:41</span><span>5G　82%</span></div>
+              <div class="phone-screen" id="childScreen"></div>
+              <nav class="phone-tabs child-phone-tabs">
+                <button class="is-active" data-child-page="home"><i>⌂</i><span>首页</span></button>
+                <button data-child-page="tasks"><i>✓</i><span>任务</span><em class="tab-dot">2</em></button>
+                <button data-child-page="messages"><i>信</i><span>消息</span><em class="tab-dot">3</em></button>
+                <button data-child-page="growth"><i>星</i><span>成长</span></button>
+                <button data-child-page="profile"><i>我</i><span>我的</span></button>
+              </nav>
+            </div>
+            <aside class="annotation-card child-annotation-card"><span class="eyebrow">当前演示身份</span><h3>张小满 · 孩子成长空间</h3><p>课程封面读取后台课程配置，六维数据与家长端、后台共用成长主档；孩子页面只展示任务、成长与陪伴关系。</p><div class="privacy-row"><span>当前营期</span><b>国庆03期</b></div><div class="privacy-row"><span>成长记录</span><b>跨营期同步</b></div><div class="privacy-row"><span>家长管理项</span><b>不在孩子端展示</b></div></aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="system-view" data-view="scrm">
+        <div class="admin-shell admin-shell--scrm scrm-real-shell">
+          <aside class="admin-nav scrm-real-nav">
+            <div class="admin-brand"><span class="brand-mark small">兴</span><span><b>兴智销售系统</b><small>客户关系管理</small></span></div>
+            <nav><button class="is-active" data-scrm-page="products"><i>▣</i>产品列表</button><button data-scrm-page="orders"><i>▤</i>订单列表</button><button data-scrm-page="sync"><i>↻</i>X学院同步</button><button data-scrm-page="exceptions"><i>!</i>合同异常</button></nav>
+            <div class="admin-user"><span>何</span><div><b>何东新</b><small>销售运营</small></div></div>
+          </aside>
+          <div class="admin-content">
+            <header class="content-top scrm-content-top"><div><span class="crumb" id="scrmCrumb">客户关系管理 / 产品管理</span><h1 id="scrmTitle">产品列表</h1></div><div id="scrmHeaderActions"></div></header>
+            <div id="scrmContent"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="system-view" data-view="ops">
+        <div class="admin-shell">
+          <aside class="admin-nav unified-ops-nav">
+            <div class="admin-brand"><span class="brand-mark small">兴</span><span><b>传承后台</b><small>统一业务中台</small></span></div>
+            <nav>
+              <small class="nav-group-title">通用业务</small>
+              <button class="is-active" data-ops-page="orderRouting"><i>▤</i>订单中心 <em>23</em></button>
+              <small class="nav-group-title">家长成长服务</small>
+              <button data-ops-page="legacyAssign"><i>分</i>待分配列表 <em>2</em></button>
+              <button data-ops-page="legacyClasses"><i>班</i>常规班级</button>
+              <button data-ops-page="legacyStages"><i>阶</i>阶段管理</button>
+              <small class="nav-group-title xcollege">X学院管理</small>
+              <button data-ops-page="xorders"><i>X</i>待开通订单 <em>6</em></button>
+              <button data-ops-page="entitlements"><i>资</i>服务资格</button>
+              <button data-ops-page="childUsers"><i>人</i>营员与家庭</button>
+              <button data-ops-page="courses"><i>课</i>X学院课程</button>
+              <button data-ops-page="dashboard"><i>营</i>营期管理</button>
+              <button data-ops-page="postCamp"><i>后</i>营后管理 <em>8</em></button>
+              <button data-ops-page="reservations"><i>约</i>预约中心 <em>12</em></button>
+              <button data-ops-page="approvals"><i>审</i>审批中心 <em>4</em></button>
+              <button data-ops-page="audit"><i>记</i>操作审计</button>
+            </nav>
+            <div class="admin-user"><span>管</span><div><b>超级管理员</b><small>统一运营中心</small></div></div>
+          </aside>
+          <div class="admin-content">
+            <header class="content-top"><div><span class="crumb" id="opsCrumb">传承后台 / 通用业务</span><h1 id="opsTitle">订单中心</h1></div><div id="opsHeaderActions"></div></header>
+            <div id="opsContent"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="system-view" data-view="camp">
+        <div class="workspace workspace--camp">
+          <aside class="review-aside camp-review-aside">
+            <span class="eyebrow">兴智工作台 · 融合方案</span><h2>同一工作台，两类服务场景</h2>
+            <button class="aside-link is-active" data-camp-page="workbench"><i>▦</i>工作台</button>
+            <button class="aside-link" data-camp-page="messages"><i>▤</i>消息</button>
+            <button class="aside-link" data-camp-page="people"><i>人</i>我的营员</button>
+            <button class="aside-link" data-camp-page="profile"><i>○</i>岗位与权限</button>
+            <div class="aside-note"><b>融合原则</b><p>父母课程能力原样保留；有X学院岗位时才显示场景切换。消息统一接收，工作台与服务对象随场景变化。</p></div>
+          </aside>
+          <div class="phone-stage camp-stage workbench-stage">
+            <div class="phone-frame camp-phone workbench-phone">
+              <div class="phone-status workbench-status"><span>09:56</span><span>▮▮▮ 5G　82%</span></div>
+              <div class="phone-screen" id="campScreen"></div>
+              <nav class="phone-tabs workbench-tabs">
+                <button class="is-active" data-camp-page="workbench"><i>▦</i><span>工作台</span></button>
+                <button data-camp-page="messages"><i>▤</i><span>消息</span><em class="tab-dot">3</em></button>
+                <button class="ai-tab" data-camp-page="ai"><i>AI</i><span>助手</span></button>
+                <button data-camp-page="people"><i>人</i><span>我的营员</span></button>
+                <button data-camp-page="profile"><i>○</i><span>我</span></button>
+              </nav>
+            </div>
+            <aside class="annotation-card camp-annotation"><span class="eyebrow">当前演示身份</span><h3>陈毅北 · 孩子指导师</h3><p>同时承担父母成长服务与X学院营期岗位，因此显示场景切换。单一岗位用户直接进入对应工作台。</p><div class="privacy-row"><span>当前范围</span><b>向日葵2班</b></div><div class="privacy-row"><span>营员资料</span><b>必要可见</b></div><div class="privacy-row"><span>合同权益</span><b>不可修改</b></div></aside>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" data-close-modal aria-label="关闭">×</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden><aside class="drawer" id="drawerContent"></aside></div>
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+  <script src="./app.js?v=42"></script>
+</body>
+</html>
